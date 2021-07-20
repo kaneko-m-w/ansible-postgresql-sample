@@ -1,0 +1,7 @@
+- name: Postgre SQL
+  hosts: target
+  tasks:
+   - name: Install PostgreSQL 
+     apt: name=postgresql update_cache=true state=present
+   - name: Ensure the PostgreSQL service is running
+     service: name=postgresql state=started enabled=yes

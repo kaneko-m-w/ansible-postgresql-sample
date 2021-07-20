@@ -1,0 +1,21 @@
+version: '3'
+services:
+  ansible:
+    container_name: ansible 
+    build: ./ansible
+    tty: true
+    working_dir: "/var/data"
+    volumes:
+      - .:/var/data
+    links:
+      - target
+
+  target:
+    container_name: target
+    build: 
+      context: ./target/
+      dockerfile: ./Dockerfile
+    tty: true
+    volumes:
+      - ./target/home:/home
+
